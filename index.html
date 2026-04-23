@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Rivera – Full Stack Developer</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/portfolio.css" />
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">AR<span class="accent">.</span></a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <canvas id="heroCanvas"></canvas>
+      </div>
+      <div class="hero-content reveal">
+        <p class="hero-greeting">Hi, I'm</p>
+        <h1 class="hero-name">Alex Rivera</h1>
+        <div class="hero-title-wrap">
+          <span class="hero-title-static">I build </span>
+          <span class="hero-typewriter" id="typewriter"></span>
+          <span class="hero-cursor">|</span>
+        </div>
+        <p class="hero-desc">
+          Full-stack developer crafting fast, accessible, and beautifully engineered web experiences.
+          5+ years turning ideas into production-ready products.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+        <div class="hero-scroll-hint">
+          <span>Scroll down</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">01 / About</span>
+          <h2 class="section-title">Who I Am</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              I'm a full-stack developer based in San Francisco with a passion for building products
+              that are both technically excellent and genuinely delightful to use. I care deeply about
+              performance, accessibility, and the details that make a great user experience.
+            </p>
+            <p>
+              When I'm not coding, you'll find me contributing to open-source projects, writing about
+              web performance on my blog, or exploring the mountains with my camera.
+            </p>
+            <div class="about-stats">
+              <div class="stat">
+                <span class="stat-num" data-count="5">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num" data-count="40">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Projects Shipped</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num" data-count="12">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Open Source Repos</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-card reveal">
+            <div class="about-avatar">
+              <div class="avatar-ring"></div>
+              <div class="avatar-inner">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="100" cy="80" r="38" fill="var(--accent)" opacity="0.15"/>
+                  <circle cx="100" cy="76" r="32" fill="var(--accent)" opacity="0.3"/>
+                  <circle cx="100" cy="72" r="26" fill="var(--accent)"/>
+                  <path d="M40 165 C40 130 65 115 100 115 C135 115 160 130 160 165" fill="var(--surface-2)"/>
+                  <path d="M44 168 C44 133 67 118 100 118 C133 118 156 133 156 168" fill="var(--accent)" opacity="0.8"/>
+                </svg>
+              </div>
+            </div>
+            <div class="about-quick-info">
+              <div class="quick-info-item">
+                <span class="qi-icon">📍</span>
+                <span>San Francisco, CA</span>
+              </div>
+              <div class="quick-info-item">
+                <span class="qi-icon">🎓</span>
+                <span>CS, UC Berkeley</span>
+              </div>
+              <div class="quick-info-item">
+                <span class="qi-icon">💼</span>
+                <span>Available for freelance</span>
+              </div>
+              <div class="quick-info-item">
+                <span class="qi-icon">🌐</span>
+                <span>Open to remote roles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">02 / Projects</span>
+          <h2 class="section-title">What I've Built</h2>
+        </div>
+
+        <!-- Project 1: CSS Animation Demo -->
+        <article class="project-card reveal" data-project="1">
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-num">01</span>
+              <span class="project-type">Frontend</span>
+            </div>
+            <h3 class="project-title">Motion UI Library</h3>
+            <p class="project-desc">
+              A zero-dependency CSS animation library with 50+ entrance, exit, and attention-seeking
+              effects. Used in 200+ production apps with a 4.9-star rating.
+            </p>
+            <div class="project-badges">
+              <span class="badge badge-css">CSS</span>
+              <span class="badge badge-js">JavaScript</span>
+              <span class="badge badge-npm">npm</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub →</a>
+              <a href="#" class="project-link">Live Demo →</a>
+            </div>
+          </div>
+          <div class="project-demo">
+            <div class="demo-label">Live Preview</div>
+            <div class="demo-frame demo-animations" id="demoAnimations">
+              <div class="demo-box-row">
+                <div class="anim-box" id="animBox1">Fade</div>
+                <div class="anim-box" id="animBox2">Slide</div>
+                <div class="anim-box" id="animBox3">Scale</div>
+                <div class="anim-box" id="animBox4">Rotate</div>
+              </div>
+              <button class="demo-btn" id="runAnimations">Run Animations</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: JS Sorting Visualizer -->
+        <article class="project-card project-card-alt reveal" data-project="2">
+          <div class="project-demo">
+            <div class="demo-label">Live Preview</div>
+            <div class="demo-frame demo-sorter" id="demoSorter">
+              <div class="sort-bars" id="sortBars"></div>
+              <div class="sort-controls">
+                <button class="demo-btn" id="shuffleBars">Shuffle</button>
+                <button class="demo-btn" id="sortBarsBtn">Sort (Bubble)</button>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-num">02</span>
+              <span class="project-type">Algorithm Viz</span>
+            </div>
+            <h3 class="project-title">Algorithm Visualizer</h3>
+            <p class="project-desc">
+              Interactive sorting and pathfinding algorithm visualizer. See bubble sort, merge sort,
+              Dijkstra's, and A* come alive in real time with step-by-step explanations.
+            </p>
+            <div class="project-badges">
+              <span class="badge badge-js">JavaScript</span>
+              <span class="badge badge-html">HTML</span>
+              <span class="badge badge-css">CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub →</a>
+              <a href="#" class="project-link">Try It →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Canvas Drawing -->
+        <article class="project-card reveal" data-project="3">
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-num">03</span>
+              <span class="project-type">Canvas API</span>
+            </div>
+            <h3 class="project-title">Pixel Canvas</h3>
+            <p class="project-desc">
+              A collaborative pixel art canvas built on the HTML5 Canvas API and WebSockets.
+              Supports real-time multi-user drawing, undo/redo, and palette customization.
+            </p>
+            <div class="project-badges">
+              <span class="badge badge-html">HTML5</span>
+              <span class="badge badge-js">JavaScript</span>
+              <span class="badge badge-node">Node.js</span>
+              <span class="badge badge-ws">WebSocket</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub →</a>
+              <a href="#" class="project-link">Draw →</a>
+            </div>
+          </div>
+          <div class="project-demo">
+            <div class="demo-label">Live Preview</div>
+            <div class="demo-frame demo-canvas-wrap">
+              <canvas id="pixelCanvas" width="200" height="150"></canvas>
+              <div class="canvas-toolbar">
+                <div class="color-swatches" id="colorSwatches"></div>
+                <button class="demo-btn small" id="clearCanvas">Clear</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Dark Mode Toggle -->
+        <article class="project-card project-card-alt reveal" data-project="4">
+          <div class="project-demo">
+            <div class="demo-label">Live Preview</div>
+            <div class="demo-frame demo-theme" id="demoTheme">
+              <div class="theme-preview-card" id="themeCard">
+                <div class="theme-preview-header">
+                  <div class="theme-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <span class="theme-preview-title">Dashboard</span>
+                </div>
+                <div class="theme-preview-body">
+                  <div class="theme-bar" style="width:70%"></div>
+                  <div class="theme-bar" style="width:45%"></div>
+                  <div class="theme-bar" style="width:85%"></div>
+                  <div class="theme-bar" style="width:30%"></div>
+                </div>
+              </div>
+              <button class="demo-btn" id="toggleTheme">Toggle Dark Mode</button>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-num">04</span>
+              <span class="project-type">UI / UX</span>
+            </div>
+            <h3 class="project-title">Theme Engine</h3>
+            <p class="project-desc">
+              A lightweight CSS custom properties theme engine with smooth transitions. Supports
+              system preference detection, persistence, and runtime palette switching.
+            </p>
+            <div class="project-badges">
+              <span class="badge badge-css">CSS</span>
+              <span class="badge badge-js">JavaScript</span>
+              <span class="badge badge-ts">TypeScript</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub →</a>
+              <a href="#" class="project-link">Docs →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">03 / Skills</span>
+          <h2 class="section-title">My Tech Stack</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skills-group reveal">
+            <h3 class="skills-group-title">Frontend</h3>
+            <div class="tech-badges">
+              <span class="tech-badge" data-level="95">
+                <span class="tb-icon tb-react"></span>React
+                <span class="tb-bar"><span class="tb-fill" data-w="95"></span></span>
+              </span>
+              <span class="tech-badge" data-level="92">
+                <span class="tb-icon tb-ts"></span>TypeScript
+                <span class="tb-bar"><span class="tb-fill" data-w="92"></span></span>
+              </span>
+              <span class="tech-badge" data-level="90">
+                <span class="tb-icon tb-html"></span>HTML5
+                <span class="tb-bar"><span class="tb-fill" data-w="90"></span></span>
+              </span>
+              <span class="tech-badge" data-level="90">
+                <span class="tb-icon tb-css"></span>CSS3
+                <span class="tb-bar"><span class="tb-fill" data-w="90"></span></span>
+              </span>
+              <span class="tech-badge" data-level="85">
+                <span class="tb-icon tb-vue"></span>Vue.js
+                <span class="tb-bar"><span class="tb-fill" data-w="85"></span></span>
+              </span>
+              <span class="tech-badge" data-level="80">
+                <span class="tb-icon tb-next"></span>Next.js
+                <span class="tb-bar"><span class="tb-fill" data-w="80"></span></span>
+              </span>
+            </div>
+          </div>
+          <div class="skills-group reveal">
+            <h3 class="skills-group-title">Backend</h3>
+            <div class="tech-badges">
+              <span class="tech-badge">
+                <span class="tb-icon tb-node"></span>Node.js
+                <span class="tb-bar"><span class="tb-fill" data-w="88"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-python"></span>Python
+                <span class="tb-bar"><span class="tb-fill" data-w="82"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-express"></span>Express
+                <span class="tb-bar"><span class="tb-fill" data-w="85"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-graphql"></span>GraphQL
+                <span class="tb-bar"><span class="tb-fill" data-w="75"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-pg"></span>PostgreSQL
+                <span class="tb-bar"><span class="tb-fill" data-w="80"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-redis"></span>Redis
+                <span class="tb-bar"><span class="tb-fill" data-w="70"></span></span>
+              </span>
+            </div>
+          </div>
+          <div class="skills-group reveal">
+            <h3 class="skills-group-title">Tooling & Cloud</h3>
+            <div class="tech-badges">
+              <span class="tech-badge">
+                <span class="tb-icon tb-git"></span>Git
+                <span class="tb-bar"><span class="tb-fill" data-w="95"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-docker"></span>Docker
+                <span class="tb-bar"><span class="tb-fill" data-w="78"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-aws"></span>AWS
+                <span class="tb-bar"><span class="tb-fill" data-w="72"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-linux"></span>Linux
+                <span class="tb-bar"><span class="tb-fill" data-w="85"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-ci"></span>CI/CD
+                <span class="tb-bar"><span class="tb-fill" data-w="80"></span></span>
+              </span>
+              <span class="tech-badge">
+                <span class="tb-icon tb-vite"></span>Vite
+                <span class="tb-bar"><span class="tb-fill" data-w="88"></span></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">04 / Contact</span>
+          <h2 class="section-title">Let's Work Together</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-left reveal">
+            <p class="contact-intro">
+              Whether you have a project in mind, want to collaborate, or just want to say hello —
+              my inbox is always open. I typically respond within 24 hours.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:alex@example.com" class="contact-link">
+                <span class="cl-icon">✉️</span>
+                <div>
+                  <span class="cl-label">Email</span>
+                  <span class="cl-value">alex@example.com</span>
+                </div>
+              </a>
+              <a href="#" class="contact-link">
+                <span class="cl-icon">💻</span>
+                <div>
+                  <span class="cl-label">GitHub</span>
+                  <span class="cl-value">github.com/alexrivera</span>
+                </div>
+              </a>
+              <a href="#" class="contact-link">
+                <span class="cl-icon">🔗</span>
+                <div>
+                  <span class="cl-label">LinkedIn</span>
+                  <span class="cl-value">linkedin.com/in/alexrivera</span>
+                </div>
+              </a>
+              <a href="#" class="contact-link">
+                <span class="cl-icon">🐦</span>
+                <div>
+                  <span class="cl-label">Twitter</span>
+                  <span class="cl-value">@alexbuilds</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" placeholder="jane@company.com" required />
+            </div>
+            <div class="form-group">
+              <label for="contactMsg">Message</label>
+              <textarea id="contactMsg" rows="5" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <span id="submitText">Send Message</span>
+            </button>
+            <div class="form-success" id="formSuccess">
+              Message sent! I'll get back to you soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <span class="footer-logo">AR<span class="accent">.</span></span>
+          <span class="footer-copy">Built with HTML, CSS & JS &mdash; &copy; 2026 Alex Rivera</span>
+          <div class="footer-socials">
+            <a href="#" aria-label="GitHub">GH</a>
+            <a href="#" aria-label="LinkedIn">LN</a>
+            <a href="#" aria-label="Twitter">TW</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/src/portfolio.js" type="module"></script>
+  </body>
+</html>
