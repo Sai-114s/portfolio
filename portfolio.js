@@ -287,78 +287,6 @@
 })();
 
 // ========================
-// Demo 3: Pixel Canvas
-// ========================
-(function initPixelCanvas() {
-  const canvas = document.getElementById('pixelCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const swatchsContainer = document.getElementById('colorSwatches');
-  const clearBtn = document.getElementById('clearCanvas');
-
-  const colors = ['#7c6ef5','#34d399','#f472b6','#fb923c','#60a5fa','#fbbf24','#f87171','#ffffff'];
-  let activeColor = colors[0];
-  let painting = false;
-
-  colors.forEach(c => {
-    const s = document.createElement('div');
-    s.className = 'swatch';
-    if (c === activeColor) s.classList.add('active');
-    s.style.background = c;
-    s.addEventListener('click', () => {
-      document.querySelectorAll('.swatch').forEach(x => x.classList.remove('active'));
-      s.classList.add('active');
-      activeColor = c;
-    });
-    swatchsContainer.appendChild(s);
-  });
-
-  function getPos(e) {
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width  / rect.width;
-    const scaleY = canvas.height / rect.height;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    return {
-      x: (clientX - rect.left) * scaleX,
-      y: (clientY - rect.top)  * scaleY,
-    };
-  }
-
-  function draw(e) {
-    if (!painting) return;
-    const { x, y } = getPos(e);
-    ctx.fillStyle = activeColor;
-    ctx.beginPath();
-    ctx.arc(x, y, 4, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  canvas.addEventListener('mousedown', e => { painting = true; draw(e); });
-  canvas.addEventListener('mousemove', draw);
-  canvas.addEventListener('mouseup',   () => { painting = false; });
-  canvas.addEventListener('touchstart', e => { e.preventDefault(); painting = true; draw(e); }, { passive: false });
-  canvas.addEventListener('touchmove',  e => { e.preventDefault(); draw(e); },                  { passive: false });
-  canvas.addEventListener('touchend',   () => { painting = false; });
-
-  clearBtn.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
-
-  // Draw something to start
-  ctx.fillStyle = '#7c6ef5';
-  for (let i = 0; i < 30; i++) {
-    ctx.beginPath();
-    ctx.arc(
-      20 + Math.random() * 160,
-      20 + Math.random() * 110,
-      Math.random() * 5 + 2,
-      0, Math.PI * 2
-    );
-    ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
-    ctx.fill();
-  }
-})();
-
-// ========================
 // Demo 4: Theme Toggle
 // ========================
 (function initThemeDemo() {
@@ -371,6 +299,98 @@
     card.classList.toggle('dark-preview', dark);
     btn.textContent = dark ? 'Toggle Light Mode' : 'Toggle Dark Mode';
   });
+})();
+
+// ========================
+// Demo 3: Alumni Chat
+// ========================
+(function initChatDemo() {
+  const messages = document.getElementById('chatMessages');
+  const input = document.getElementById('chatInput');
+  const send = document.getElementById('chatSend');
+  if (!messages || !input || !send) return;
+
+  const replies = [
+    'Great question! The next alumni meetup is this Saturday at 5 PM.',
+    'Mentorship sign-ups are open. I can share the form if you want.',
+    'You can browse alumni profiles by graduation year or industry.',
+    'Thanks for reaching out! I will get you the details shortly.',
+  ];
+  let replyIndex = 0;
+
+  function addMessage(text, role) {
+    const row = document.createElement('div');
+    row.className = `chat-message ${role}`;
+    const bubble = document.createElement('span');
+    bubble.className = 'chat-bubble';
+    bubble.textContent = text;
+    row.appendChild(bubble);
+    messages.appendChild(row);
+    messages.scrollTop = messages.scrollHeight;
+    return row;
+  }
+
+  function addTyping() {
+    const row = addMessage('Typing...', 'bot');
+    row.classList.add('typing');
+    return row;
+  }
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    input.value = '';
+    input.focus();
+
+    const typingRow = addTyping();
+    setTimeout(() => {
+      if (typingRow && typingRow.parentNode) typingRow.remove();
+      const reply = replies[replyIndex % replies.length];
+      replyIndex += 1;
+      addMessage(reply, 'bot');
+    }, 600);
+  }
+
+  send.addEventListener('click', sendMessage);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+})();
+
+// ========================
+// Demo 5: Job Tracker
+// ========================
+(function initTrackerDemo() {
+  const status = document.getElementById('trackerStatus');
+  const card = document.getElementById('trackerActive');
+  const btn = document.getElementById('trackerAdvance');
+  if (!status || !card || !btn) return;
+
+  const stages = [
+    { label: 'Screening', className: '' },
+    { label: 'Technical', className: 'stage-warn' },
+    { label: 'Final Round', className: '' },
+    { label: 'Offer Pending', className: 'stage-success' },
+  ];
+  let index = 0;
+
+  function applyStage() {
+    const stage = stages[index];
+    status.textContent = stage.label;
+    card.classList.remove('stage-warn', 'stage-success');
+    if (stage.className) card.classList.add(stage.className);
+  }
+
+  btn.addEventListener('click', () => {
+    index = (index + 1) % stages.length;
+    applyStage();
+  });
+
+  applyStage();
 })();
 
 // ========================
